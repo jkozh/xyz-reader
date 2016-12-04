@@ -7,7 +7,7 @@ import java.net.URL;
 
 class Config {
 
-    private static String LOG_TAG = Config.class.getSimpleName();
+    private static final String LOG_TAG = Config.class.getSimpleName();
     static final URL BASE_URL;
 
 
