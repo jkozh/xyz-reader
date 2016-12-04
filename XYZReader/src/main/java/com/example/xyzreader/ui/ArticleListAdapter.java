@@ -9,6 +9,7 @@ import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -56,12 +57,9 @@ class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.ViewHol
                         mCursor.getLong(ArticleLoader.Query.PUBLISHED_DATE),
                         System.currentTimeMillis(), DateUtils.HOUR_IN_MILLIS,
                         DateUtils.FORMAT_ABBREV_ALL).toString()
-                        + " by "
+                        + "\n"
                         + mCursor.getString(ArticleLoader.Query.AUTHOR));
 
-        holder.thumbnailView.setAspectRatio(mCursor.getFloat(ArticleLoader.Query.ASPECT_RATIO));
-
-        Glide.clear(holder.thumbnailView);
         Glide
                 .with(holder.thumbnailView.getContext())
                 .load(mCursor.getString(ArticleLoader.Query.THUMB_URL))
@@ -69,16 +67,19 @@ class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.ViewHol
                 .dontAnimate()
                 .listener(new RequestListener<String, GlideDrawable>() {
                     @Override
-                    public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                    public boolean onException(Exception e, String model,
+                                               Target<GlideDrawable> target,
+                                               boolean isFirstResource) {
                         return false;
                     }
 
                     @Override
                     public boolean onResourceReady(GlideDrawable resource, String model,
                                                    Target<GlideDrawable> target,
-                                                   boolean isFromMemoryCache, boolean isFirstResource) {
+                                                   boolean isFromMemoryCache,
+                                                   boolean isFirstResource) {
                         Bitmap bitmap = ((GlideBitmapDrawable) resource.getCurrent()).getBitmap();
-                        Palette palette = Palette.generate(bitmap);
+                        Palette palette = Palette.from(bitmap).generate();
                         int defaultColor = 0xFF333333;
                         int color = palette.getDarkMutedColor(defaultColor);
                         holder.itemView.setBackgroundColor(color);
@@ -102,7 +103,7 @@ class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.ViewHol
     static class ViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.thumbnail)
-        DynamicHeightNetworkImageView thumbnailView;
+        ImageView thumbnailView;
         @BindView(R.id.article_title)
         TextView titleView;
         @BindView(R.id.article_subtitle)

@@ -1,4 +1,10 @@
 <resources>
+    <!-- main -->
+    <dimen name="cardview_margin">4dp</dimen>
+    <dimen name="textview_padding_large">16dp</dimen>
+    <dimen name="textview_padding_small">4dp</dimen>
+
+
     <!-- detail -->
     <dimen name="detail_title_text_size">32sp</dimen>
     <dimen name="detail_body_text_size">22sp</dimen>
