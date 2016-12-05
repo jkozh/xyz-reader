@@ -13,7 +13,7 @@ Through this project, I:
     
 ## Screenshots
 
-<img width="45%" src="https://github.com/jkozh/xyz-reader/blob/master/art/Screenshot_20161205-031849_framed.png" /><img width="45%" src="https://github.com/jkozh/xyz-reader/blob/master/art/Screenshot_20161205-050301_framed.png" />
+<img width="45%" src="https://github.com/jkozh/xyz-reader/blob/master/art/Screenshot_20161205-031849_framed.png" /><img width="45%" src="https://github.com/jkozh/xyz-reader/blob/master/art/Screenshot_20161205-124955_framed.png" />
     
 ## License
 ```
