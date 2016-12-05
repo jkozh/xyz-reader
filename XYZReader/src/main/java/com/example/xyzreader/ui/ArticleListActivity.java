@@ -8,17 +8,15 @@ import android.content.IntentFilter;
 import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
-import android.text.format.DateUtils;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
 import com.example.xyzreader.R;
 import com.example.xyzreader.data.ArticleLoader;
 import com.example.xyzreader.data.ItemsContract;
@@ -99,6 +97,27 @@ public class ArticleListActivity extends AppCompatActivity implements
         ArticleListAdapter adapter = new ArticleListAdapter(cursor);
         adapter.setHasStableIds(true);
         mRecyclerView.setAdapter(adapter);
+
+        adapter.setClickCallback(new ArticleListAdapter.ClickCallback() {
+
+            @Override
+            public void openDetailView(long position) {
+
+                String transitionName = getString(R.string.transition_photo);
+
+                final View v = getLayoutInflater().inflate(R.layout.fragment_article_detail, null);
+                ImageView photo = (ImageView) v.findViewById(R.id.photo);
+
+                Bundle bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                       ArticleListActivity.this, photo, transitionName).toBundle();
+
+                startActivity(new Intent(
+                        Intent.ACTION_VIEW,
+                        ItemsContract.Items.buildItemUri(position)), bundle);
+            }
+
+        });
+
         int columnCount = getResources().getInteger(R.integer.list_column_count);
         StaggeredGridLayoutManager sglm =
                 new StaggeredGridLayoutManager(columnCount, StaggeredGridLayoutManager.VERTICAL);

@@ -1,6 +1,5 @@
 package com.example.xyzreader.ui;
 
-import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.support.v7.graphics.Palette;
@@ -20,7 +19,6 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.example.xyzreader.R;
 import com.example.xyzreader.data.ArticleLoader;
-import com.example.xyzreader.data.ItemsContract;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,21 +26,29 @@ import butterknife.ButterKnife;
 class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.ViewHolder> {
 
     private Cursor mCursor;
+    private ClickCallback mClickCallback;
+
+    void setClickCallback(ClickCallback mClickCallback) {
+        this.mClickCallback = mClickCallback;
+    }
+
+    interface ClickCallback {
+        void openDetailView(long position);
+    }
 
     ArticleListAdapter(Cursor cursor) {
         mCursor = cursor;
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(final ViewGroup parent, final int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_item_article, parent, false);
         final ViewHolder vh = new ViewHolder(view);
-        view.setOnClickListener(new View.OnClickListener() {
+        vh.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                parent.getContext().startActivity(new Intent(Intent.ACTION_VIEW,
-                        ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition()))));
+                mClickCallback.openDetailView(getItemId(vh.getAdapterPosition()));
             }
         });
         return vh;

@@ -1,12 +1,12 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_margin="@dimen/cardview_margin"
     android:clickable="true"
     android:focusable="true"
     android:foreground="?selectableItemBackground"
-    card_view:cardElevation="4dp">
+    card_view:cardElevation="@dimen/cardview_elevation">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,11 +20,11 @@
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
             android:background="@color/photo_placeholder"
-            android:contentDescription="@null" />
+            android:contentDescription="@null"
+            android:transitionName="@string/transition_photo"/>
 
         <TextView
             android:id="@+id/article_title"
-            style="@style/TextAppearance.AppCompat.Subhead"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/textview_padding_large"
@@ -32,18 +32,22 @@
             android:paddingRight="@dimen/textview_padding_large"
             android:paddingBottom="@dimen/textview_padding_small"
             android:textColor="@color/grey_200"
+            android:textSize="@dimen/title_size"
+            android:textStyle="bold"
+            android:fontFamily="serif"
             android:ellipsize="end"
             android:maxLines="4" />
 
         <TextView
             android:id="@+id/article_subtitle"
-            style="@style/TextAppearance.AppCompat.Caption"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/textview_padding_large"
             android:paddingRight="@dimen/textview_padding_large"
             android:paddingBottom="@dimen/textview_padding_large"
             android:textColor="@color/grey_400"
+            android:textSize="@dimen/subtitle_size"
+            android:textStyle="italic"
             android:gravity="center"
             android:ellipsize="end"
             android:maxLines="2"/>
