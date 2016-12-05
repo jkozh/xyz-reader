@@ -1,7 +1,7 @@
 <resources>
     <color name="light_green_500">#8BC34A</color>
     <color name="light_green_700">#689F38</color>
-    <color name="light_green_a700">#64DD17</color>
+    <color name="cyan_500">#00BCD4</color>
 
     <color name="photo_placeholder">#CCCCCC</color>
 
