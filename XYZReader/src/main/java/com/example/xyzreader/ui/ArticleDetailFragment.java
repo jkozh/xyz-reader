@@ -13,7 +13,10 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ShareCompat;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.format.DateUtils;
 import android.text.method.LinkMovementMethod;
@@ -54,6 +57,8 @@ public class ArticleDetailFragment extends Fragment implements
     private long mItemId;
     private Unbinder unbinder;
 
+    @BindView(R.id.toolbar_detail)
+    Toolbar mToolbar;
     @BindView(R.id.photo)
     ImageView mPhotoView;
     @BindView(R.id.share_fab)
@@ -107,6 +112,13 @@ public class ArticleDetailFragment extends Fragment implements
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_article_detail, container, false);
         unbinder = ButterKnife.bind(this, view);
+
+        ((AppCompatActivity) getActivity()).setSupportActionBar(mToolbar);
+        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        if (actionBar != null){
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setDisplayShowTitleEnabled(false);
+        }
         return view;
     }
 

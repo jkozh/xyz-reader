@@ -1,13 +1,9 @@
 <resources>
-
     <color name="light_green_500">#8BC34A</color>
     <color name="light_green_700">#689F38</color>
     <color name="light_green_a700">#64DD17</color>
 
-    <color name="photo_placeholder">#ccc</color>
-
-    <color name="theme_primary">#04561A</color>
-    <color name="theme_primary_dark">#04561A</color>
-
-    <color name="ltgray">#ffe0e0e0</color>
+    <color name="photo_placeholder">#CCCCCC</color>
+    <color name="grey_200">#EEEEEE</color>
+    <color name="white">#FFFFFF</color>
 </resources>

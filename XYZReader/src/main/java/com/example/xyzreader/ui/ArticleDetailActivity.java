@@ -14,6 +14,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowInsets;
@@ -36,8 +37,10 @@ public class ArticleDetailActivity extends AppCompatActivity
     private long mSelectedItemId;
     private MyPagerAdapter mPagerAdapter;
 
+
     @BindView(R.id.pager)
     ViewPager mPager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +80,16 @@ public class ArticleDetailActivity extends AppCompatActivity
         } else {
             mSelectedItemId = savedInstanceState.getLong(EXTRA_SELECTED_ITEM_ID);
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
