@@ -11,6 +11,10 @@ Through this project, I:
     * Separated an interface into surfaces.
     * Effectively used transitions and motion.
     
+## Screenshots
+
+<img width="45%" src="https://github.com/jkozh/xyz-reader/blob/master/art/Screenshot_20161205-031849_framed.png" /><img width="45%" src="https://github.com/jkozh/xyz-reader/blob/master/art/Screenshot_20161205-050301_framed.png" />
+    
 ## License
 ```
 Copyright 2016 Julia Kozhukhovskaya
