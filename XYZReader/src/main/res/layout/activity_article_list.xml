@@ -42,7 +42,8 @@
             android:scrollbarStyle="outsideOverlay"
             android:paddingLeft="@dimen/list_side_margin"
             android:paddingRight="@dimen/list_side_margin"
-            android:paddingBottom="28dp" />
+            android:paddingTop="@dimen/list_padding_top"
+            android:paddingBottom="@dimen/list_padding_bottom" />
 
     </android.support.v4.widget.SwipeRefreshLayout>
 

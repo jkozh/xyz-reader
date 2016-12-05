@@ -22,6 +22,7 @@ import android.text.format.DateUtils;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -30,6 +31,7 @@ import android.widget.TextView;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
@@ -118,7 +120,16 @@ public class ArticleDetailFragment extends Fragment implements
         if (actionBar != null){
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setDisplayShowTitleEnabled(false);
+            actionBar.setDisplayShowHomeEnabled(true);
         }
+
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().onBackPressed();
+            }
+        });
+
         return view;
     }
 
@@ -134,13 +145,11 @@ public class ArticleDetailFragment extends Fragment implements
                             + mCursor.getString(ArticleLoader.Query.AUTHOR)));
             bodyView.setText(Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY)));
 
-            //Palette p = Palette.generate(bitmap, 12);
-            //mMutedColor = p.getDarkMutedColor(0xFF333333);
-            //mRootView.findViewById(R.id.meta_bar).setBackgroundColor(mMutedColor);
-
             Glide
                     .with(this)
                     .load(mCursor.getString(ArticleLoader.Query.PHOTO_URL))
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .dontAnimate()
                     .into(mPhotoView);
 
             mShareFab.setOnClickListener(new View.OnClickListener() {
@@ -187,7 +196,6 @@ public class ArticleDetailFragment extends Fragment implements
     @Override
     public void onLoaderReset(Loader<Cursor> cursorLoader) {
         mCursor = null;
-        bindViews();
     }
 
     @Override public void onDestroyView() {

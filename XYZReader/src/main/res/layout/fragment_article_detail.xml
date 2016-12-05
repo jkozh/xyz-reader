@@ -7,15 +7,14 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:layout_height="260dp"
+        android:layout_height="@dimen/appbar_height"
         android:fitsSystemWindows="true">
 
         <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_scrollFlags="scroll|enterAlwaysCollapsed"
-            android:fitsSystemWindows="true">
+            android:fitsSystemWindows="true"
+            app:layout_scrollFlags="scroll|enterAlwaysCollapsed">
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -36,7 +35,6 @@
                     android:background="@drawable/scrim" />
 
                 <LinearLayout
-                    android:id="@+id/meta_bar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
@@ -56,7 +54,7 @@
                         android:textColor="@color/white"
                         android:textStyle="bold"
                         android:textSize="@dimen/detail_title_text_size"
-                        android:lineSpacingMultiplier="0.9" />
+                        android:lineSpacingMultiplier="@fraction/detail_title_line_spacing_multiplier" />
 
                     <TextView
                         android:id="@+id/article_byline"
@@ -93,10 +91,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/detail_inner_horiz_margin"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="@dimen/detail_body_margin_top"
             android:layout_marginRight="@dimen/detail_inner_horiz_margin"
             android:paddingBottom="@dimen/detail_body_bottom_margin"
-            android:textColor="#000"
             android:textColorLink="@color/light_green_700"
             android:textSize="@dimen/detail_body_text_size"
             android:lineSpacingMultiplier="@fraction/detail_body_line_spacing_multiplier" />
@@ -111,7 +108,6 @@
         app:layout_anchor="@id/appbar"
         app:layout_anchorGravity="bottom|right|end"
         android:src="@drawable/ic_share"
-        app:elevation="@dimen/fab_elevation"
         android:contentDescription="@string/action_share"
         android:clickable="true" />
 
