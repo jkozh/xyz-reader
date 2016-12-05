@@ -4,6 +4,9 @@
     <color name="light_green_a700">#64DD17</color>
 
     <color name="photo_placeholder">#CCCCCC</color>
+
     <color name="grey_200">#EEEEEE</color>
+    <color name="grey_400">#BDBDBD</color>
+
     <color name="white">#FFFFFF</color>
 </resources>

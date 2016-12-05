@@ -42,7 +42,7 @@
             android:paddingLeft="@dimen/textview_padding_large"
             android:paddingRight="@dimen/textview_padding_large"
             android:paddingBottom="@dimen/textview_padding_large"
-            android:textColor="@color/grey_200"
+            android:textColor="@color/grey_400"
             android:gravity="center"
             android:ellipsize="end"
             android:maxLines="2"/>
